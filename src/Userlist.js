@@ -3,11 +3,24 @@ import "./App.css";
 function User({ user }) {
   return (
     <div className="UserCard">
-      <b>{user.username}</b> <span>({user.email})</span>
+      <input className="NameInput" placeholder="이름" />
+      <input className="MoneyInput" placeholder="금액 (숫자만 입력)" />
+      {/* <b>{user.username}</b> <a>({user.money}원)</a> */}
     </div>
   );
 }
-const users = [];
+const users = [
+  {
+    id: 1,
+    username: "이름",
+    money: null,
+  },
+  {
+    id: 2,
+    username: "이름",
+    money: null,
+  },
+];
 
 function UserList() {
   return (
@@ -15,6 +28,7 @@ function UserList() {
       {users.map((user) => (
         <User user={user} key={user.id} />
       ))}
+      <div className="UserCard">+</div>
     </div>
   );
 }
