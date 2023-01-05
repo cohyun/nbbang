@@ -4,8 +4,10 @@ import "./App.css";
 function User({ user }) {
   const [newName, setnewName] = useState("");
   const [newMoney, setnewMoney] = useState(0);
+  const moneyList = [];
   return (
     <div className="UserCard">
+      <div onClick={() => {}}>x</div>
       <input
         className="NameInput"
         placeholder="이름"
@@ -13,8 +15,14 @@ function User({ user }) {
           user.username = e.target.value;
         }}
       />
-      <input className="MoneyInput" placeholder="금액 (숫자만 입력)" />
-      {/* <b>{user.username}</b> <a>({user.money}원)</a> */}
+      <input
+        className="MoneyInput"
+        placeholder="금액 (숫자만 입력)"
+        defaultValue="0"
+      />
+      <div className="MoneyPlus" onClick={() => {}}>
+        +
+      </div>
     </div>
   );
 }
@@ -22,12 +30,12 @@ const users = [
   {
     id: 1,
     username: "이름",
-    money: 0,
+    money: [0],
   },
   {
     id: 2,
     username: "이름",
-    money: 0,
+    money: [0],
   },
 ];
 let idNum = 3;
@@ -46,7 +54,7 @@ function UserList() {
           users.push({
             id: idNum,
             username: "이름",
-            money: 0,
+            money: [0],
           });
           idNum++;
           setFresh(refresh + 1);
