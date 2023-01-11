@@ -5,9 +5,17 @@ function User({ user }) {
   const [newName, setnewName] = useState("");
   const [newMoney, setnewMoney] = useState(0);
   const moneyList = [];
+  const [refresh, setFresh] = useState(0);
   return (
     <div className="UserCard">
-      <div onClick={() => {}}>x</div>
+      <div
+        onClick={() => {
+          onRemove(user.id);
+          setFresh(refresh + 1);
+        }}
+      >
+        x
+      </div>
       <input
         className="NameInput"
         placeholder="이름"
@@ -64,6 +72,18 @@ function UserList() {
       </div>
     </div>
   );
+}
+
+function onRemove(id) {
+  for (let i = 0; i < users.length; i++) {
+    if (i < id - 1) {
+      users[i] = users[i];
+    } else if (i >= id - 1) {
+      users[i] = users[i + 1];
+    }
+  }
+  users.pop(users.length);
+  console.log(users);
 }
 
 export { users, UserList };
